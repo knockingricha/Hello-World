@@ -21,7 +21,7 @@
 
 <script>
     // Writing the code for the question in here
-    const question = {
+    const questions = [{
         text: 'What is my favorite pastime?',
         options: [
             'test',
@@ -30,23 +30,42 @@
             'test4'
         ],
         answer: 3
-    }
+    },{
+        text: 'What is my name?',
+        options: [
+            'new',
+            'new1',
+            'new2',
+            'new3'
+        ],
+        answer: 1
+    }]
+
+    // Index of current question
+    let current_question_index = 0
+    
     $(document).ready(function() {
-        console.log('hi')
-        $('#question-div').text(question.text)
-        $('#option-1').text(question.options[0])
-        $('#option-2').text(question.options[1])
-        $('#option-3').text(question.options[2])
-        $('#option-4').text(question.options[3])
+        initializeQuestion()
     })
+
+    const initializeQuestion = () => {
+        const temp_question = questions[current_question_index]
+        $('#question-div').text(temp_question.text)
+        $('#option-1').text(temp_question.options[0])
+        $('#option-2').text(temp_question.options[1])
+        $('#option-3').text(temp_question.options[2])
+        $('#option-4').text(temp_question.options[3])
+    }
 
     // This is a function in ES6 syntax, search for it because it is a shorter way of doing things and is much used in React etc
     const testOption = pressed => {
-        if(pressed===question.answer){
+        if(pressed===questions[current_question_index].answer){
             alert('Yayy!')
         }else{
             alert('Nayy!')
         }
+        current_question_index = (current_question_index+1)%questions.length
+        initializeQuestion()
     }
 </script>
 </html>
