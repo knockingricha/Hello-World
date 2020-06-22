@@ -12,10 +12,16 @@
   <body>
     <div>
         <div id="question-div">Question will be shown here</div>
-        <button id="option-1" onclick="testOption(0)">Option 1</button>
-        <button id="option-2" onclick="testOption(1)">Option 2</button>
-        <button id="option-3" onclick="testOption(2)">Option 3</button>
-        <button id="option-4" onclick="testOption(3)">Option 4</button>
+        <label for="option-1">Option 1</label>
+            <input type="checkbox" id="option-1" onclick="testOption(0)"><br></br>
+            <label for="option-2">Option 2</label>
+            <input type="checkbox" id="option-2" onclick="testOption(1)"><br></br>
+            <label for="option-3">Option 3</label>
+            <input type="checkbox" id="option-3" onclick="testOption(2)"><br></br>
+            <label for="option-4">Option 4</label>
+            <input type="checkbox" id="option-4" onclick="testOption(3)"><br></br>
+            <button id="click " onclick="submit()">Submit</button>
+            
     </div>
 </body>
 
@@ -29,7 +35,7 @@
             'test3',
             'test4'
         ],
-        answer: 3
+        answer: [1,2]
     },{
         text: 'What is my name?',
         options: [
@@ -38,7 +44,7 @@
             'new2',
             'new3'
         ],
-        answer: 1
+        answer: [1,3]
     }]
 
     // Index of current question
@@ -59,7 +65,7 @@
 
     // This is a function in ES6 syntax, search for it because it is a shorter way of doing things and is much used in React etc
     const testOption = pressed => {
-        if(pressed===questions[current_question_index].answer){
+        if(pressed===questions[current_question_index].answer(0)&&=questions[current_question_index].answer(1)){
             alert('Yayy!')
         }else{
             alert('Nayy!')
